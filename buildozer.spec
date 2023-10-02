@@ -13,7 +13,7 @@ package.domain = org.test
 source.dir = .
 
 # (list) Source files to include (let empty to include all the files)
-source.include_exts = 
+source.include_exts = py,png,jpg,kv,atlas,json,ttf
 
 # (list) List of inclusions using pattern matching
 #source.include_patterns = assets/*,images/*.png
@@ -37,7 +37,11 @@ version = 0.1
 
 # (list) Application requirements
 # comma separated e.g. requirements = sqlite3,kivy
-requirements = python3==3.7.6,hostpython3==3.7.6,kivy,kivymd,firebase-admin
+requirements = python3==3.7.6,hostpython3==3.7.6,kivy,kivymd,firebase-admin, python-for-android
+google-cloud-firestore
+
+[android.extra_packages]
+com.google.firebase:firebase-admin:7.1.0
 # (str) Custom source folders for requirements
 # Sets custom source for any requirements with recipes
 # requirements.source.kivy = ../../kivy
@@ -406,7 +410,7 @@ log_level = 2
 
 # (int) Display warning if buildozer is run as root (0 = False, 1 = True)
 warn_on_root = 1
-
+platform = android
 # (str) Path to build artifact storage, absolute or relative to spec file
 # build_dir = ./.buildozer
 
