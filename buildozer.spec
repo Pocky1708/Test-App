@@ -4,7 +4,7 @@
 title = ATC
 
 # (str) Package name
-package.name = myapp
+package.name = com.mycompany.myapp
 
 # (str) Package domain (needed for android/ios packaging)
 package.domain = org.test
@@ -37,11 +37,11 @@ version = 0.1
 
 # (list) Application requirements
 # comma separated e.g. requirements = sqlite3,kivy
-requirements = python3==3.7.6,hostpython3==3.7.6,kivy,kivymd,firebase-admin, python-for-android
-google-cloud-firestore
+requirements = python3==3.7.6,hostpython3==3.7.6,kivy,kivymd,python-for-android,google-cloud-firestore,firebase_admin
 
 [android.extra_packages]
-com.google.firebase:firebase-admin:7.1.0
+    com.google.android.gms
+    com.google.firebase:firebase-admin:7.1.0
 # (str) Custom source folders for requirements
 # Sets custom source for any requirements with recipes
 # requirements.source.kivy = ../../kivy
@@ -98,7 +98,8 @@ fullscreen = 0
 
 # (list) Permissions
 # (See https://python-for-android.readthedocs.io/en/latest/buildoptions/#build-options-1 for all the supported syntaxes and properties)
-android.permissions = INTERNET
+[android.permissions]
+INTERNET
 
 # (list) features (adds uses-feature -tags to manifest)
 #android.features = android.hardware.usb.host
