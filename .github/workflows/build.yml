@@ -1,54 +1,25 @@
-name: Build
+name: Build Kivy app
+
 on:
   push:
-    branches-ignore:
-      - data
-      - gh-pages
-    tags:
-      - '**'
-  pull_request:
-    branches-ignore:
-      - data
-      - gh-pages
+    branches:
+      - main
 
 jobs:
-  # Build job. Builds app for Android with Buildozer
-  build-android:
-    name: Build for Android
+  build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-        with:
-          path: master
+      - uses: actions/checkout@v3
 
-      - name: Build with Buildozer
-        uses: ArtemSBulgakov/buildozer-action@v1
-        id: buildozer
-        with:
-          repository_root: master
-          buildozer_version: stable
-          command: buildozer android debug
+      - name: Create Buildozer project directory
+        run: mkdir .buildozer
 
-      - name: Upload artifacts
-        uses: actions/upload-artifact@v2
-        with:
-          name: package
-          path: ${{ steps.buildozer.outputs.filename }}
+      - name: Copy buildozer.spec file
+        run: cp buildozer.spec .buildozer/buildozer.spec
 
-      - name: Checkout
-        uses: actions/checkout@v2
-        with:
-          path: data
-          ref: data # Branch name
+      - name: Build Jnius library
+        run: buildozer init
 
-      - name: Set up Python
-        uses: actions/setup-python@v2
-        with:
-          python-version: 3.7.2
-          architecture: x64
-
-      - name: Push binary to data branch
-        if: github.event_name == 'push'
-        run: python master/.ci/move_binary.py "${{ steps.buildozer.outputs.filename }}" master data bin
+      - name: Build Kivy app
+        run: buildozer build
