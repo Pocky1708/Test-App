@@ -18,8 +18,5 @@ jobs:
       - name: Copy buildozer.spec file
         run: cp buildozer.spec .buildozer/buildozer.spec
 
-      - name: Build Jnius library
-        run: buildozer init
-
       - name: Build Kivy app
         run: buildozer build
