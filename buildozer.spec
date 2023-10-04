@@ -37,7 +37,7 @@ version = 0.1
 
 # (list) Application requirements
 # comma separated e.g. requirements = sqlite3,kivy
-requirements = python3==3.7.6,hostpython3==3.7.6,kivy,kivymd,firebase-admin,google-cloud-firestore, google-auth, cachetools, pyasn1-modules, pyasn1, rsa, googleapis-common-protos, protobuf, requests, chardet, idna, urllib3, google-cloud-core, proto-plus
+requirements = python3,kivy,kivymd,pillow, pyjnius,firebase-admin, cachecontrol, msgpack, requests, certifi, chardet, idna, urllib3, google-api-core, google-auth, cachetools, pyasn1-modules, pyasn1, rsa, pyasn1, googleapis-common-protos, protobuf, google-api-python-client, google-auth-httplib2, httplib2, pyparsing, uritemplate, google-cloud-firestore, google-cloud-core, proto-plus, google-cloud-storage, google-resumable-media, google-crc32c
 
 # (str) Custom source folders for requirements
 # Sets custom source for any requirements with recipes
@@ -64,7 +64,7 @@ orientation = portrait
 # author = © Copyright Info
 
 # change the major version of python used by the app
-osx.python_version = 3.7.6
+osx.python_version = 3
 
 # Kivy version to use
 osx.kivy_version = 1.9.1
@@ -101,7 +101,7 @@ fullscreen = 0
 #android.features = android.hardware.usb.host
 
 # (int) Target Android API, should be as high as possible.
-android.api = 31
+android.api = 33
 
 
 # (int) Minimum API your APK / AAB will support.
