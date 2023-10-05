@@ -32,8 +32,8 @@ jobs:
         uses: ArtemSBulgakov/buildozer-action@v1
         id: buildozer
         with:
-          command: buildozer appclean
-                   buildozer android debug
+          command: buildozer -v android clean 
+                   buildozer -v android debug
           buildozer_version: stable
 
       - name: Upload artifacts
