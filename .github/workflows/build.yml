@@ -32,7 +32,7 @@ jobs:
         uses: ArtemSBulgakov/buildozer-action@v1
         id: buildozer
         with:
-          command: buildozer -v android debug clean
+          command: buildozer -v android clean
           buildozer_version: stable
 
       - name: Upload artifacts
